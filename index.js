@@ -5,6 +5,7 @@ import {
 } from "./utils.js"
 import { renderParties } from "./pages/show-parties.js"
 import { renderCandidates} from "./pages/show-candidates.js"
+import { getAllCandidates, getCandidatesForParty } from "./fetch-facade.js";
 
 window.addEventListener("load", async () => {
     const router = new Navigo("/", { hash: true })
@@ -23,8 +24,15 @@ window.addEventListener("load", async () => {
             renderTemplate(templateShowParties, "content")
             renderParties()
         })
-        .on("/show-candidates/:candidateId", (navigoMatch) => {
+        .on("/show-candidates", () => {
             renderTemplate(templateShowCandidates, "content")
-            renderCandidates(navigoMatch.data.candidateId)
+            var candidates = getAllCandidates()
+            renderCandidates(candidates)
+        })
+
+        .on("/show-candidates/:partyId", (navigoMatch) => {
+            renderTemplate(templateShowCandidates, "content")
+            var candidates = getCandidatesForParty(navigoMatch.data.partyId)
+            renderCandidates(candidates)
         })
 })
