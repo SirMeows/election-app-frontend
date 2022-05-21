@@ -13,14 +13,12 @@ function renderRows(parties) {
 }
 
 function createTableRows(parties) {
-    console.log(parties)
-    const rows = parties.sort((a,b) => a.name.localeCompare(b.name)).map(party =>// Sorting like this doesn't work for Map
+    const rows = parties.sort((a,b) => a.name.localeCompare(b.name)).map(party =>
         `
         <tr>
-            <td> ${party.tag}</td>
-            <td> ${party.name}</td>
+            <td> ${party.tag} </td>
+            <td> <a className="nav-link active" href="#/show-candidates/${party.id}" data-navigo="" > ${party.name} </a> </td>
         </tr>       
         `).join("\n")
     return rows;
-
 }
