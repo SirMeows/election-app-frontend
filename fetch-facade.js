@@ -1,7 +1,8 @@
 import { SERVER_URL } from "../settings.js"
 
 export const getAllParties = async () => await fetch(`${SERVER_URL}parties`, makeOptions("get")).then(res => handleErrors(res))
-export const getAllCandidates = async (id) => await fetch(`${SERVER_URL}candidates/${id}`, makeOptions("get")).then(res => handleErrors(res))
+export const getCandidatesForParty = async (id) => await fetch(`${SERVER_URL}parties/${id}/candidates`, makeOptions("get")).then(res => handleErrors(res))
+export const getAllCandidates = async () => await fetch(`${SERVER_URL}candidates`, makeOptions("get")).then(res => handleErrors(res))
 
 export function makeOptions(method, body, addToken) {
     const opts = {

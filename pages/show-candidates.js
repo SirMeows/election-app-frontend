@@ -1,24 +1,23 @@
-import {getAllCandidates} from "../fetch-facade.js"
 
-export function renderCandidates() {
-    getAllCandidates()
-        .then(candidates => {
-            renderRows(candidates)
-        })
-}
 
-function renderRows(candidates) {
-    const rows = createTableRows(candidates);
-    document.getElementById("get-all-candidates-tbl").innerHTML = rows;
+export function renderCandidates(data) {
+    data.then(candidates => {
+        console.log("rendering candidates: ", candidates)
+        const rows = createTableRows(candidates);
+        const tableElement = document.getElementById("get-candidates-tbl");
+        tableElement.innerHTML = rows
+    })
+
+
 }
 
 function createTableRows(candidates) {
     const rows = candidates.sort((a,b) => a.lastName.localeCompare(b.lastName)).map(candidate =>
-    //const rows = candidates.map(candidate =>
         `
         <tr>
             <td> ${candidate.firstName}</td>
             <td> ${candidate.lastName}</td>
+            <td> ${candidate.partyName}</td>
         </tr>       
         `).join("\n")
     return rows;
