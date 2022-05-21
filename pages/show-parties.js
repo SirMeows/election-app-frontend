@@ -17,8 +17,8 @@ function createTableRows(parties) {
     const rows = parties.sort((a,b) => a.name.localeCompare(b.name)).map(party =>// Sorting like this doesn't work for Map
         `
         <tr>
-            <td> ${party.tag}</td>
-            <td> ${party.name}</td>
+            <td> ${party.tag} </td>
+            <td> <a className="nav-link active" href="#/show-candidates/${party.id}" data-navigo="" > ${party.name} </a> </td>
         </tr>       
         `).join("\n")
     return rows;
