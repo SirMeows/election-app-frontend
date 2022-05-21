@@ -1,16 +1,14 @@
 <template>
-    <h2>[Entity] Details</h2>
-    <table id="details-tbl" class="table table-striped table">
-
+    <h2>Candidate Overview</h2>
+    <table id="candidates-tbl" class="table table-striped table">
         <tr>
-            <th scope="col">Id</th><td id="get-id-tbl-data"></td>
+            <th scope="col">First Name</th><td id="get-firstName-tbl-data"></td>
         </tr>
         <tr>
-            <th scope="col">[2 attribute]</th><td id="get-[attribute2]-tbl-data"></td>
-        </tr>
-        <tr>
-            <th scope="col">[3 attribute]</th><td id="get-[attribute3]-tbl-data"></td>
+            <th scope="col">LastName</th><td id="get-lastName-tbl-data"></td>
         </tr>
         <!-- ADD: More table rows as needed for Details page -->
     </table>
+    <tbody id="get-all-candidates-tbl">
+    </tbody>
 </template>

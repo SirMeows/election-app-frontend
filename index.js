@@ -8,8 +8,8 @@ import { renderCandidates} from "./pages/show-candidates.js"
 
 window.addEventListener("load", async () => {
     const router = new Navigo("/", { hash: true })
-    const templateShowParty = await loadTemplate("./pages/pages/show-parties.js")
-    const templateShowCandidate = await loadTemplate("./pages/show-candidates.js")
+    const templateShowParties = await loadTemplate("./pages/show-parties.html")
+    const templateShowCandidates = await loadTemplate("./pages/show-candidates.html")
 
     adjustForMissingHash()
     await router
@@ -19,13 +19,12 @@ window.addEventListener("load", async () => {
                 done()
             }
         })
-        .on("/", ()=>renderTemplate(templateHome, "content"))
-        .on("/show-[entities]", () => {
-            renderTemplate(templateShowEntities, "content")
-            renderEntities()
+        .on("/show-parties", () => {
+            renderTemplate(templateShowParties, "content")
+            renderParties()
         })
-        .on("/show-[entity]/:entityId", (navigoMatch) => {
-            renderTemplate(templateShowEntity, "content")
-            renderEntity(navigoMatch.data.entityId)
+        .on("/show-candidates/:candidateId", (navigoMatch) => {
+            renderTemplate(templateShowCandidates, "content")
+            renderCandidates(navigoMatch.data.candidateId)
         })
 })
