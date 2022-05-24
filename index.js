@@ -11,6 +11,7 @@ window.addEventListener("load", async () => {
     const router = new Navigo("/", { hash: true })
     const templateShowParties = await loadTemplate("./pages/show-parties.html")
     const templateShowCandidates = await loadTemplate("./pages/show-candidates.html")
+    const templateManageCandidates = await loadTemplate("./pages/manage-candidates.html")
 
     adjustForMissingHash()
     await router
@@ -34,5 +35,8 @@ window.addEventListener("load", async () => {
             renderTemplate(templateShowCandidates, "content")
             var candidates = getCandidatesForParty(navigoMatch.data.partyId)
             renderCandidates(candidates)
+        })
+        .on("/manage-candidates", ( ) => {
+            renderTemplate(templateManageCandidates, "content")
         })
 })

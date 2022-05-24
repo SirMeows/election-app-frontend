@@ -13,6 +13,8 @@ function createTableRows(candidates) {
             <td> ${candidate.firstName}</td>
             <td> ${candidate.lastName}</td>
             <td> ${candidate.partyName}</td>
+            <td> <button type="submit" id="edit-candidate-btn">Edit candidate</button> </td>
+            <td> <button type="submit" id="remove-candidate-btn">Remove candidate</button> </td>
         </tr>       
         `).join("\n")
     return rows;
