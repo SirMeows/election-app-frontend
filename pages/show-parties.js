@@ -18,6 +18,7 @@ function createTableRows(parties) {
         <tr>
             <td> ${party.tag} </td>
             <td> <a className="nav-link active" href="#/show-candidates/${party.id}" data-navigo="" > ${party.name} </a> </td>
+            <td> <button type="submit" id="add-candidate-btn"</button> Add candidate </td>
         </tr>       
         `).join("\n")
     return rows;
