@@ -9,13 +9,11 @@ export function initiatePartyDropdown() {
 
 function renderPartyOptions(parties) {
     const partyOptions =
-        parties.map(party => {
-                createPartyOption(party)
-            }
+        parties.map(party => createPartyOption(party)
         ).join("\n")
     document.getElementById("party-select-dropdown").innerHTML = partyOptions;
 }
 
 function createPartyOption(party) {
-    return `<option> ${party.name} </option>`
+    return `<option value="${party.id}"> ${party.name} </option>`
 }
