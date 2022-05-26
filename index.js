@@ -7,11 +7,14 @@ import { renderParties } from "./pages/show-parties.js"
 import { renderCandidates} from "./pages/show-candidates.js"
 import { getAllCandidates, getCandidatesForParty } from "./fetch-facade.js";
 
+//import { getCandidateById } from "./pages/edit-candidate.js"
+import { getCandidateById } from "./fetch-facade.js"
+
 window.addEventListener("load", async () => {
     const router = new Navigo("/", { hash: true })
     const templateShowParties = await loadTemplate("./pages/show-parties.html")
     const templateShowCandidates = await loadTemplate("./pages/show-candidates.html")
-    const templateManageCandidates = await loadTemplate("./pages/manage-candidates.html")
+    //const templateEditCandidate = await loadTemplate(("./pages/edit-candidate.html"))
 
     adjustForMissingHash()
     await router
@@ -36,7 +39,9 @@ window.addEventListener("load", async () => {
             var candidates = getCandidatesForParty(navigoMatch.data.partyId)
             renderCandidates(candidates)
         })
-        .on("/manage-candidates", ( ) => {
-            renderTemplate(templateManageCandidates, "content")
-        })
+        /*.on("/edit-candidate/:candidateId", (navigoMatch) => {
+            renderTemplate(templateEditCandidate, "content")
+            var candidate = getCandidateById(navigoMatch.data.candidateId)
+            editCandidate(candidate)
+        })*/
 })

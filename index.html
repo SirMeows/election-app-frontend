@@ -31,11 +31,17 @@
                 <li class="nav-item">
                     <a id="show-candidates" class="nav-link active" href="/show-candidates" data-navigo>Show Candidates</a>
                 </li>
-                <!-- Make this into a dropdown with add, edit and delete option ?
-                <li class="nav-item">
-                    <a id="manage-candidates" class="nav-link active" href="/manage-candidates" data-navigo>Manage Candidate</a>
+                <!-- Dropdown segment -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Manage candidates
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/add-candidate" data-navigo>Add candidate</a></li>
+                        <li><a class="dropdown-item" href="/edit-candidate" data-navigo>Edit candidate</a></li>
+                        <li><a class="dropdown-item" href="/delete-candidate" data-navigo>Delete candidate</a></li>
+                    </ul>
                 </li>
-                -->
             </ul>
         </div>
     </div>
