@@ -4,7 +4,7 @@ export const getAllParties = async () => await fetch(`${SERVER_URL}parties`, mak
 export const getCandidatesForParty = async (id) => await fetch(`${SERVER_URL}parties/${id}/candidates`, makeOptions("get")).then(res => handleErrors(res))
 export const getAllCandidates = async () => await fetch(`${SERVER_URL}candidates`, makeOptions("get")).then(res => handleErrors(res))
 export const getCandidateById = async (id) => await fetch(`${SERVER_URL}candidates/${id}`, makeOptions("get")).then(res => handleErrors(res))
-export const addCandidate = async (id, candidateDto) => await fetch(`${SERVER_URL}/parties/${id}/candidates`, makeOptions("post", candidateDto)).then(res => handleErrors(res))
+export const addCandidateRequest = async (id, candidateDto) => await fetch(`${SERVER_URL}parties/${id}/candidates`, makeOptions("post", candidateDto)).then(res => handleErrors(res))
 
 export function makeOptions(method, body, addToken) {
     const opts = {

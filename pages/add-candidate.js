@@ -1,4 +1,4 @@
-import { getAllParties } from "../fetch-facade.js";
+import {addCandidateRequest, getAllParties} from "../fetch-facade.js";
 
 export function initiatePartyDropdown() {
     getAllParties()
@@ -16,4 +16,24 @@ function renderPartyOptions(parties) {
 
 function createPartyOption(party) {
     return `<option value="${party.id}"> ${party.name} </option>`
+}
+
+export function addCandidate() {
+    document.getElementById("add-candidate-btn").onclick = createNewCandidate;
+}
+
+
+const createNewCandidate = async () => {
+    const partyDropdown = document.getElementById("party-select-dropdown")
+    const partyId = partyDropdown.value;
+    const selectedIndex = partyDropdown.selectedIndex;
+
+    const candidateDto = { // create a object out of this data
+        firstName: document.getElementById("firstName-input").value,
+        lastName: document.getElementById("lastName-input").value,
+        partyName: partyDropdown.options[selectedIndex].text
+    }
+
+    const req = await addCandidateRequest(partyId, candidateDto)
+    console.log(JSON.stringify(req))
 }

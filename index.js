@@ -6,7 +6,7 @@ import {
 import { renderParties } from "./pages/show-parties.js"
 import { renderCandidates} from "./pages/show-candidates.js"
 import { getAllCandidates, getCandidatesForParty } from "./fetch-facade.js";
-import { initiatePartyDropdown } from "./pages/add-candidate.js";
+import { initiatePartyDropdown, addCandidate } from "./pages/add-candidate.js";
 
 window.addEventListener("load", async () => {
     const router = new Navigo("/", { hash: true })
@@ -40,6 +40,7 @@ window.addEventListener("load", async () => {
         .on("/add-candidate", () => {
             renderTemplate(templateAddCandidate, "content")
             initiatePartyDropdown()
+            addCandidate()
         })
 
 
