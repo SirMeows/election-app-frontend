@@ -7,14 +7,13 @@ export function renderCandidates(data) {
 }
 
 function createTableRows(candidates) {
-    const rows = candidates.sort((a,b) => a.lastName.localeCompare(b.lastName)).map(candidate =>
+    //TODO: Rather get with partyId than partyName?
+    const rows = candidates.sort((a,b) => a.lastName.localeCompare(b.lastName)).map(candidateDto =>
         `
         <tr>
-            <td> ${candidate.firstName}</td>
-            <td> ${candidate.lastName}</td>
-            <td> ${candidate.partyName}</td>
-            <td> <button type="submit" id="edit-candidate-btn">Edit candidate</button> </td>
-            <td> <button type="submit" id="remove-candidate-btn">Remove candidate</button> </td>
+            <td> ${candidateDto.firstName}</td>
+            <td> ${candidateDto.lastName}</td>
+            <td> ${candidateDto.partyName}</td>  
         </tr>       
         `).join("\n")
     return rows;
