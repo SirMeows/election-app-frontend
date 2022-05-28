@@ -1,4 +1,5 @@
 import { sortAlphabetically } from "../utils.js";
+import {deleteCandidateRequest} from "../fetch-facade.js";
 
 export function manageCandidateHandler(data) {
     data.then(candidates => {
@@ -40,6 +41,9 @@ function handleEditClick(candidateId) {
 
 function handleDeleteClick(candidateId) {
     console.log('delete', candidateId)
+    const res = deleteCandidateRequest(candidateId)
+        .then()
+
 }
 
 
