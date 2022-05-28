@@ -5,7 +5,7 @@ import {
 } from "./utils.js"
 import { renderParties } from "./pages/show-parties.js"
 import { renderCandidates} from "./pages/show-candidates.js"
-import { getAllCandidates, getCandidatesBySearchTerm, getCandidatesForParty } from "./fetch-facade.js"
+import { getAllCandidates, getCandidatesForParty } from "./fetch-facade.js"
 import { initiatePartyDropdown, addCandidateHandler } from "./pages/add-candidate.js"
 import { manageCandidateHandler } from "./pages/manage-candidate.js"
 
@@ -46,8 +46,8 @@ window.addEventListener("load", async () => {
         })
         .on("/manage-candidate", () => {
             renderTemplate(templateManageCandidate, "content")
-            //addSearchHandler
-            const candidates = getCandidatesBySearchTerm()
+            //TODO: Add search function
+            const candidates = getAllCandidates()
             manageCandidateHandler(candidates)
         })
 })

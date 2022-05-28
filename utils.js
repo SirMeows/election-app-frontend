@@ -62,3 +62,7 @@ export function setActiveLink(topnav, activeUrl) {
         }
     })
 }
+
+export function sortAlphabetically(candidates) {
+    return candidates.sort((a,b) => a.lastName.localeCompare(b.lastName))
+}

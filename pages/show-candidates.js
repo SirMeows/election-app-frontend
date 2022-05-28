@@ -1,3 +1,5 @@
+import { sortAlphabetically } from "../utils.js";
+
 export function renderCandidates(data) {
     data.then(candidates => {
         const rows = createTableRows(candidates);
@@ -7,7 +9,7 @@ export function renderCandidates(data) {
 }
 
 function createTableRows(candidates) {
-    const rows = candidates.sort((a,b) => a.lastName.localeCompare(b.lastName)).map(candidateDto =>
+    const rows = sortAlphabetically(candidates).map(candidateDto =>
         `
         <tr>
             <td> ${candidateDto.firstName}</td>
@@ -17,3 +19,6 @@ function createTableRows(candidates) {
         `).join("\n")
     return rows;
 }
+
+
+
