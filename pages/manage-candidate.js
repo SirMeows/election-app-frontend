@@ -21,8 +21,25 @@ function createTableRow(candidate) {
 }
 
 function updateNode(td, candidate){
-    td.textContent = candidate[td.id];
-    console.log(candidate[td.id]);
+    if(td.id.includes('edit')) {
+        td.addEventListener('click', function(){
+            handleEditClick(candidate.id)
+        })
+    } else if(td.id.includes('delete')) {
+        td.addEventListener('click',  function(){
+            handleDeleteClick(candidate.id)
+        })
+    } else {
+        td.textContent = candidate[td.id];
+    }
+}
+
+function handleEditClick(candidateId) {
+    console.log('edit',candidateId)
+}
+
+function handleDeleteClick(candidateId) {
+    console.log('delete', candidateId)
 }
 
 
