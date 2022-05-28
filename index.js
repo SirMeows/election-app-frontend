@@ -5,14 +5,16 @@ import {
 } from "./utils.js"
 import { renderParties } from "./pages/show-parties.js"
 import { renderCandidates} from "./pages/show-candidates.js"
-import { getAllCandidates, getCandidatesForParty } from "./fetch-facade.js";
-import { initiatePartyDropdown, addCandidate } from "./pages/add-candidate.js";
+import { getAllCandidates, getCandidatesBySearchTerm, getCandidatesForParty } from "./fetch-facade.js"
+import { initiatePartyDropdown, addCandidateHandler } from "./pages/add-candidate.js"
+import { manageCandidateHandler } from "./pages/manage-candidate.js"
 
 window.addEventListener("load", async () => {
     const router = new Navigo("/", { hash: true })
     const templateShowParties = await loadTemplate("./pages/show-parties.html")
     const templateShowCandidates = await loadTemplate("./pages/show-candidates.html")
     const templateAddCandidate = await loadTemplate("./pages/add-candidate.html")
+    const templateManageCandidate = await loadTemplate("./pages/manage-candidate.html")
 
     adjustForMissingHash()
     await router
@@ -28,25 +30,24 @@ window.addEventListener("load", async () => {
         })
         .on("/show-candidates", () => {
             renderTemplate(templateShowCandidates, "content")
-            var candidates = getAllCandidates()
+            const candidates = getAllCandidates()
             renderCandidates(candidates)
         })
 
         .on("/show-candidates/:partyId", (navigoMatch) => {
             renderTemplate(templateShowCandidates, "content")
-            var candidates = getCandidatesForParty(navigoMatch.data.partyId)
+            const candidates = getCandidatesForParty(navigoMatch.data.partyId)
             renderCandidates(candidates)
         })
         .on("/add-candidate", () => {
             renderTemplate(templateAddCandidate, "content")
             initiatePartyDropdown()
-            addCandidate()
+            addCandidateHandler()
         })
-
-
-        /*.on("/edit-candidate/:candidateId", (navigoMatch) => {
-            renderTemplate(templateEditCandidate, "content")
-            var candidate = getCandidateById(navigoMatch.data.candidateId)
-            editCandidate(candidate)
-        })*/
+        .on("/manage-candidate", () => {
+            renderTemplate(templateManageCandidate, "content")
+            //addSearchHandler
+            const candidates = getCandidatesBySearchTerm()
+            manageCandidateHandler(candidates)
+        })
 })

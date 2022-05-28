@@ -18,7 +18,7 @@ function createPartyOption(party) {
     return `<option value="${party.id}"> ${party.name} </option>`
 }
 
-export function addCandidate() {
+export function addCandidateHandler() {
     document.getElementById("add-candidate-btn").onclick = createNewCandidate;
 }
 
@@ -28,7 +28,7 @@ const createNewCandidate = async () => {
     const partyId = partyDropdown.value;
     const selectedIndex = partyDropdown.selectedIndex;
 
-    const candidateDto = { // create a object out of this data
+    const candidateDto = {
         firstName: document.getElementById("firstName-input").value,
         lastName: document.getElementById("lastName-input").value,
         partyName: partyDropdown.options[selectedIndex].text

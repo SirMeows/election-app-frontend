@@ -7,7 +7,6 @@ export function renderCandidates(data) {
 }
 
 function createTableRows(candidates) {
-    //TODO: Rather get with partyId than partyName?
     const rows = candidates.sort((a,b) => a.lastName.localeCompare(b.lastName)).map(candidateDto =>
         `
         <tr>
